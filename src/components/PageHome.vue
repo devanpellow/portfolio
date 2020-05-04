@@ -1,5 +1,7 @@
 <template>
-  <h1>Devan</h1>
+  <div class="">
+  Test
+</div>
 </template>
 
 <script>

@@ -1,11 +1,12 @@
 <template>
   <div id="app">
     <PageHome></PageHome>
+    <div></div>
   </div>
 </template>
 
 <script>
-import PageHome from './components/PageHome.vue'
+import PageHome from './pages/PageHome.vue'
 
 export default {
   name: 'App',

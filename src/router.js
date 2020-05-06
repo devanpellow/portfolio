@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./pages/PageHome.vue";
 import About from './pages/PageAbout.vue'
+import Animation from './pages/PageAnimation.vue'
 
 Vue.use(Router);
 
@@ -16,6 +17,11 @@ export default new Router({
       path: "/about",
       name: "about",
       component: About
+    },
+    {
+      path: "/animations",
+      name: "animations",
+      component: Animation
     }
   ]
 });

@@ -5,7 +5,9 @@
       <router-link to="/about">About</router-link> |
       <router-link to="/animations">Animations</router-link>
     </div>
-    <router-view />
+    <transition name="fade" mode="out-in">
+      <router-view />
+    </transition>
   </div>
 </template>
 
@@ -21,4 +23,14 @@ export default {
 
 <style>
 
+/*** Transitions ***/
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-out;
+}
 </style>

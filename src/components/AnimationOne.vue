@@ -16,7 +16,7 @@
 export default {
   data: function() {
     return {
-      title: "Animation One",
+      title: "Fade Modal In and Out",
       isOpen: false,
     };
   },

@@ -1,17 +1,17 @@
 <template>
-  <div class="h-screen bg-black">
-    <Intro></Intro>
-    <ProjectList></ProjectList>
+  <div class="">
+    <Header></Header>
+    <AnimationOne></AnimationOne> 
   </div>
 </template>
 
 <script>
-import ProjectList from '../components/ProjectList.vue'
-import Intro from '../components/Intro.vue'
+import Header from '../components/Header.vue'
+import AnimationOne from '../components/AnimationOne.vue'
 export default {
   components: {
-    ProjectList,
-    Intro
+    Header,
+    AnimationOne,
   }
 }
 </script>

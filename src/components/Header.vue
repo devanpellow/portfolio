@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="text-4xl text-white flex justify-center" v-text="name"></div>
+    <div class="text-4xl flex justify-center py-10" v-text="name"></div>
   </div>
 </template>
 

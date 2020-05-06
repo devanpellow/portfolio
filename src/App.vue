@@ -1,17 +1,19 @@
 <template>
-  <div id="app">
-    <PageHome></PageHome>
-    <div></div>
+ <div id="app">
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view />
   </div>
 </template>
 
 <script>
-import PageHome from './pages/PageHome.vue'
 
 export default {
   name: 'App',
   components: {
-    PageHome
+  
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-2xl" v-text="title"></div>
-    <div class="home">
+    <div>
       <button @click="slideModal">Slide Fade Modal</button>
       <transition name="slide-fade">
         <div v-if="isOpen" class="modal w-48 h-48 bg-gray-400 rounded-lg">

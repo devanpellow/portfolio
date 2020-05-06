@@ -1,9 +1,9 @@
 <template>
  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/animations">Animations</router-link>
+    <div id="nav" class="flex justify-center">
+      <router-link class="px-10" to="/">Home</router-link> |
+      <router-link class="px-10" to="/about">About</router-link> |
+      <router-link class="px-10" to="/animations">Animations</router-link>
     </div>
     <transition name="fade" mode="out-in">
       <router-view />
@@ -31,6 +31,6 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease-out;
+  transition: opacity 0.2s ease-out;
 }
 </style>

@@ -3,7 +3,8 @@
     <div id="nav" class="flex justify-center">
       <router-link class="px-10" to="/">Home</router-link> |
       <router-link class="px-10" to="/about">About</router-link> |
-      <router-link class="px-10" to="/animations">Animations</router-link>
+      <router-link class="px-10" to="/animations">Animations</router-link> |
+      <router-link class="px-10" to="/annoying-calculator">Annoying Calculator</router-link>
     </div>
     <transition name="fade" mode="out-in">
       <router-view />

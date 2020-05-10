@@ -1,9 +1,20 @@
 <template>
-  <div>
-    <button @click="shuffle()">Shuffle</button>
-    <div class="h-64 grid grid-rows-5 grid-flow-col gap-1">
-      <div class="w-1/4 border-solid border-2 border-gray-600" v-for="c in calculator" :key="c.key">{{ c.value }}</div>
+  <div class="flex flex-col items-center">
+    <div clas="w-64">
+      <input clas="w-64" type="text" v-model="input" />
     </div>
+    <div class="h-64 w-64 grid grid-rows-5 gap-2 grid-flow-col">
+      <div
+        class="w-16 border-solid border-black border-2"
+        v-for="c in calculator"
+        :key="c.key"
+      >
+        <button @click="shuffle(c)" class="w-full h-full">
+          {{ c.value }}
+        </button>
+      </div>
+    </div>
+    <div>{{ output }}</div>
   </div>
 </template>
 
@@ -11,114 +22,90 @@
 export default {
   data: function() {
     return {
+      input: "",
+      output: "",
       calculator: [
         {
-          value: 1,
-          pos: 1,
-          key: 1,
-        },
-        {
-          value: 2,
-          pos: 2,
-          key: 2,
-        },
-        {
-          value: 3,
-          pos: 3,
-          key: 3,
-        },
-        {
-          value: 4,
-          pos: 4,
-          key: 4,
-        },
-        {
-          value: 5,
-          pos: 5,
-          key: 5,
-        },
-        {
-          value: 6,
-          pos: 6,
-          key: 6,
+          value: "C",
         },
         {
           value: 7,
-          pos: 7,
-          key: 7,
+        },
+        {
+          value: 4,
+        },
+        {
+          value: 1,
+        },
+        {
+          value: "+ / -",
+        },
+        {
+          value: "(",
         },
         {
           value: 8,
-          pos: 8,
-          key: 8,
         },
         {
-          value: 9,
-          pos: 9,
-          key: 9,
+          value: 5,
+        },
+        {
+          value: 2,
         },
         {
           value: 0,
         },
         {
-          value: "C",
-          pos: 10,
-          key: 10,
-        },
-        {
-          value: "(",
-          pos: 11,
-          key: 11,
-        },
-        {
           value: ")",
-          pos: 12,
-          key: 12,
         },
         {
-          value: "/",
-          pos: 13,
-          key: 13,
+          value: 9,
         },
         {
-          value: "X",
-          pos: 14,
-          key: 14,
+          value: 6,
         },
         {
-          value: "-",
-          pos: 15,
-          key: 15,
-        },
-        {
-          value: "+",
-          pos: 16,
-          key: 16,
-        },
-        {
-          value: "=",
-          pos: 17,
-          key: 17,
+          value: 3,
         },
         {
           value: ".",
-          pos: 18,
-          key: 18,
         },
         {
-          value: "+/-",
-          pos: 19,
-          key: 19,
+          value: "/",
+        },
+        {
+          value: "x",
+        },
+        {
+          value: "-",
+        },
+        {
+          value: "+",
+        },
+        {
+          value: "=",
         },
       ],
     };
   },
   methods: {
-    shuffle: function() {
+    shuffle: function(c) {
       this.calculator.sort(() => Math.random() - 0.5);
+      if (c.value === "=") {
+        this.output = eval(this.input);
+      } else if (c.value === "C") {
+        this.output = ""
+        this.input = ""
+      } else {
+        this.input += c.value;
+      }
     },
   },
 };
 </script>
 
-<style></style>
+<style>
+input {
+  border: 1px solid black;
+}
+</style>

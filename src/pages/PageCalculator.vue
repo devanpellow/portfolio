@@ -1,7 +1,6 @@
 <template>
   <div>
     <Header></Header>
-    Here's an annoying calculator
     <Calculator/>
   </div>
 </template>

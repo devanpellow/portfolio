@@ -1,20 +1,28 @@
 <template>
-  <div class="flex flex-col items-center">
-    <div clas="w-64">
-      <input clas="w-64" type="text" v-model="input" />
-    </div>
-    <div class="h-64 w-64 grid grid-rows-5 gap-2 grid-flow-col">
+  <div class="flex justify-center">
+    <div>
+      <transition name="fade" mode="out-in">
       <div
-        class="w-16 border-solid border-black border-2"
-        v-for="c in calculator"
-        :key="c.key"
+        class="h-16 w-full text-right text-white text-5xl bg-black border-none"
       >
-        <button @click="shuffle(c)" class="w-full h-full">
-          {{ c.value }}
-        </button>
+        {{ display }}
       </div>
-    </div>
-    <div>{{ output }}</div>
+      </transition>
+        <transition-group class="grid grid-rows-5 grid-flow-col"  name="slide-up" appear>
+          <div
+            v-for="c in calculator"
+            :class="[
+              'iphone-border w-16 h-12 text-2xl',
+              c.grey ? 'bg-gray-400 text-black' : 'bg-orange-400 text-white',
+            ]"
+            :key="c.value"
+          >
+            <button @click="shuffle(c)" class="w-full h-full">
+              {{ c.value }}
+            </button>
+          </div>
+          </transition-group>
+      </div>
   </div>
 </template>
 
@@ -22,53 +30,67 @@
 export default {
   data: function() {
     return {
-      input: "",
-      output: "",
+      display: "",
       calculator: [
         {
           value: "C",
+          grey: true,
         },
         {
           value: 7,
+          grey: true,
         },
         {
           value: 4,
+          grey: true,
         },
         {
           value: 1,
+          grey: true,
         },
         {
           value: "+ / -",
+          grey: true,
         },
         {
           value: "(",
+          grey: true,
         },
         {
           value: 8,
+          grey: true,
         },
         {
           value: 5,
+          grey: true,
         },
         {
           value: 2,
+          grey: true,
         },
         {
           value: 0,
+          grey: true,
         },
         {
           value: ")",
+          grey: true,
         },
         {
           value: 9,
+          grey: true,
         },
         {
           value: 6,
+          grey: true,
         },
         {
           value: 3,
+          grey: true,
         },
         {
           value: ".",
+          grey: true,
         },
         {
           value: "/",
@@ -92,12 +114,11 @@ export default {
     shuffle: function(c) {
       this.calculator.sort(() => Math.random() - 0.5);
       if (c.value === "=") {
-        this.output = eval(this.input);
+        this.display = eval(this.display);
       } else if (c.value === "C") {
-        this.output = ""
-        this.input = ""
+        this.display = "";
       } else {
-        this.input += c.value;
+        this.display += c.value;
       }
     },
   },
@@ -105,7 +126,21 @@ export default {
 </script>
 
 <style>
-input {
-  border: 1px solid black;
+.slide-up-move {
+  transition: transform 0.6s ease-in-out;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-out;
+}
+
+.iphone-border {
+  border: 1px solid #718096;
 }
 </style>

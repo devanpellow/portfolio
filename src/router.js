@@ -25,7 +25,7 @@ export default new Router({
       component: Animation,
     },
     {
-      path: "/annoying-calculator",
+      path: "/crazy-calculator",
       name: "calculator",
       component: Calculator,
     },

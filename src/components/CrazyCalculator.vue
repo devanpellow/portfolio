@@ -3,7 +3,7 @@
     <div>
       <transition name="fade" mode="out-in">
       <div
-        class="h-16 w-full text-right text-white text-5xl bg-black border-none"
+        class="h-16 w-full text-right text-white text-5xl bg-black border-none px-2"
       >
         {{ display }}
       </div>

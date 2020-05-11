@@ -3,11 +3,13 @@ import Router from "vue-router";
 import Home from "./pages/PageHome.vue";
 import About from "./pages/PageAbout.vue";
 import Animation from "./pages/PageAnimation.vue";
-import Calculator from './pages/PageCalculator.vue';
+import Calculator from "./pages/PageCalculator.vue";
+import LedgerA from "./pages/PageLedgerA.vue";
 
 Vue.use(Router);
 
 export default new Router({
+  mode: "history",
   routes: [
     {
       path: "/",
@@ -28,6 +30,10 @@ export default new Router({
       path: "/crazy-calculator",
       name: "calculator",
       component: Calculator,
+    },{
+      path: "/ledger-A",
+      name: "ledger-a",
+      component: LedgerA,
     },
   ],
 });

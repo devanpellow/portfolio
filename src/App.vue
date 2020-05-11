@@ -4,7 +4,8 @@
       <router-link class="px-10" to="/">Home</router-link> |
       <router-link class="px-10" to="/about">About</router-link> |
       <router-link class="px-10" to="/animations">Animations</router-link> |
-      <router-link class="px-10" to="/crazy-calculator">Crazy Calculator</router-link>
+      <router-link class="px-10" to="/crazy-calculator">Crazy Calculator</router-link> |
+      <router-link class="px-10" to="/ledger-a">Ledger A</router-link>
     </div>
     <transition name="fade" mode="out-in">
       <router-view />

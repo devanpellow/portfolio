@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <Header></Header>
-    Home
+    Home :D
   </div>
 </template>
 

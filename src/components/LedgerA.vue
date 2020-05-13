@@ -3,9 +3,14 @@
     <div class="text-2xl" v-text="title"></div>
     <div>
       <form v-on:submit.prevent="addEntry">
-        <input type="text" v-model="newEntry.amount" placeholder="Amount" />
-        <input type="text" v-model="newEntry.description" placeholder="Description" />
         <input type="date" v-model="newEntry.date" placeholder="Date" />
+        <input
+          type="text"
+          v-model="newEntry.description"
+          placeholder="Description"
+        />
+        <input type="text" v-model="newEntry.amount" placeholder="Amount" />
+                
         <button
           v-on:submit.prevent="addEntry"
           class="bg-white text-xs hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2 border border-gray-400 rounded shadow"
@@ -13,12 +18,20 @@
           Add Entry
         </button>
       </form>
-
-      <transition-group name="slide-up" tag="ul" appear>
-        <li v-for="entry in entries" :key="entry.id">
-          {{ entry.description }}
-        </li>
-      </transition-group>
+      <table class="table-auto">
+        <thead>
+          <th class="px-4 py-2">Date</th>
+          <th class="px-4 py-2">Description</th>
+          <th class="px-4 py-2">Amount</th>
+        </thead>
+        <tbody>
+          <tr v-for="entry in entries" :key="entry.id">
+            <td class="border px-4 py-2" v-text="entry.date"></td>
+            <td class="border px-4 py-2" v-text="entry.description"></td>
+            <td class="border px-4 py-2" v-text="entry.amount"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>

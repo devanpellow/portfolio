@@ -10,12 +10,18 @@
           placeholder="Description"
         />
         <input type="text" v-model="newEntry.amount" placeholder="Amount" />
-                
+
         <button
           v-on:submit.prevent="addEntry"
           class="bg-white text-xs hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2 border border-gray-400 rounded shadow"
         >
           Add Entry
+        </button>
+        <button
+          v-on:submit.prevent="clearEntryForm"
+          class="bg-white text-xs hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2 border border-gray-400 rounded shadow"
+        >
+          Cancel
         </button>
       </form>
       <table class="table-auto">
@@ -29,6 +35,9 @@
             <td class="border px-4 py-2" v-text="entry.date"></td>
             <td class="border px-4 py-2" v-text="entry.description"></td>
             <td class="border px-4 py-2" v-text="entry.amount"></td>
+            <td @click="deleteEntry(entry)" class="border px-4 py-2">
+              <button>Delete</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -72,6 +81,18 @@ export default {
     addEntry() {
       this.newEntry.id = Math.floor(Math.random() * Math.floor(100)) + 1;
       this.entries.push(this.newEntry);
+      this.clearEntryForm();
+    },
+    clearEntryForm() {
+      this.newEntry = {
+        description: "",
+        amount: "",
+        date: "",
+      };
+    },
+    deleteEntry(entry) {
+      let index = this.entries.indexOf(entry)
+      this.entries.splice(index, 1);
     },
   },
 };

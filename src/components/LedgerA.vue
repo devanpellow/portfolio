@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-2xl" v-text="title"></div>
-    <div>
+    <div class="flex flex-col items-center">
       <form v-on:submit.prevent="addEntry">
         <input type="date" v-model="newEntry.date" placeholder="Date" />
         <input
@@ -24,7 +24,7 @@
           Cancel
         </button>
       </form>
-      <table class="table-auto">
+      <table class="table-auto w-1/2">
         <thead>
           <th class="px-4 py-2">Date</th>
           <th class="px-4 py-2">Description</th>

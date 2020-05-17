@@ -17,6 +17,12 @@
       <div class="w-full my-16 flex justify-center justify-around">
         <Stagger />
       </div>
+      <div class="w-full my-16 flex justify-center justify-around">
+        <AnimationState />
+      </div>
+      <div class="w-full my-16 ml-16 flex justify-center justify-around">
+        <AnimationTimelines />
+      </div>
     </div>
   </div>
 </template>
@@ -30,6 +36,8 @@ import AnimationFour from "../components/animations/AnimationFour";
 import AnimationFive from "../components/animations/AnimationFive";
 import AnimationSix from "../components/animations/AnimationSix";
 import Stagger from "../components/animations/Stagger";
+import AnimationState from "../components/animations/AnimationState";
+import AnimationTimelines from "../components/animations/AnimationTimelines";
 export default {
   components: {
     Header,
@@ -40,6 +48,8 @@ export default {
     AnimationFive,
     AnimationSix,
     Stagger,
+    AnimationState,
+    AnimationTimelines,
   },
 };
 </script>

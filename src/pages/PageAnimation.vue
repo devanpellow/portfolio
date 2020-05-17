@@ -12,6 +12,10 @@
       </div>
       <div class="w-full my-16 flex justify-center justify-around">
         <AnimationFive />
+        <AnimationSix />
+      </div>
+      <div class="w-full my-16 flex justify-center justify-around">
+        <Stagger />
       </div>
     </div>
   </div>
@@ -24,6 +28,8 @@ import AnimationTwo from "../components/animations/AnimationTwo";
 import AnimationThree from "../components/animations/AnimationThree";
 import AnimationFour from "../components/animations/AnimationFour";
 import AnimationFive from "../components/animations/AnimationFive";
+import AnimationSix from "../components/animations/AnimationSix";
+import Stagger from "../components/animations/Stagger";
 export default {
   components: {
     Header,
@@ -31,7 +37,9 @@ export default {
     AnimationTwo,
     AnimationThree,
     AnimationFour,
-    AnimationFive
+    AnimationFive,
+    AnimationSix,
+    Stagger,
   },
 };
 </script>

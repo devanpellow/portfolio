@@ -34,7 +34,8 @@
           <tr v-for="entry in entries" :key="entry.id">
             <td class="border px-4 py-2" v-text="entry.date"></td>
             <td class="border px-4 py-2" v-text="entry.description"></td>
-            <td class="border px-4 py-2">{{currency.dollar.sign}} {{entry.amount}}
+            <td class="border px-4 py-2">
+              {{ currency.dollar.sign }} {{ entry.amount }}
             </td>
             <td @click="deleteEntry(entry)" class="border px-4 py-2">
               <button>Delete</button>
@@ -54,7 +55,7 @@ export default {
       selectedCurrency: "",
       currency: {
         dollar: { sign: "$" },
-        euro: {sign: "€" },
+        euro: { sign: "€" },
       },
 
       newEntry: {
@@ -92,7 +93,7 @@ export default {
       };
     },
     deleteEntry(entry) {
-      let index = this.entries.indexOf(entry)
+      let index = this.entries.indexOf(entry);
       this.entries.splice(index, 1);
     },
   },

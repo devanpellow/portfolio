@@ -2,28 +2,16 @@
   <div class="">
     <Header></Header>
     <div class="flex flex-col">
-      <div class="w-full my-16 flex justify-center justify-around">
-        <AnimationOne />
+      <AnimationOne />
         <AnimationTwo />
-      </div>
-      <div class="w-full my-16 flex justify-center justify-around">
-        <AnimationThree />
+      <AnimationThree />
         <AnimationFour />
-      </div>
-      <div class="w-full my-16 flex justify-center justify-around">
-        <AnimationFive />
+      <AnimationFive />
         <AnimationSix />
+      <Stagger />
+      <AnimationState />
+      <AnimationTimelines />
       </div>
-      <div class="w-full my-16 flex justify-center justify-around">
-        <Stagger />
-      </div>
-      <div class="w-full my-16 flex justify-center justify-around">
-        <AnimationState />
-      </div>
-      <div class="w-full my-16 ml-16 flex justify-center justify-around">
-        <AnimationTimelines />
-      </div>
-    </div>
   </div>
 </template>
 

@@ -36,6 +36,7 @@
           <th class="px-4 py-2">Amount</th>
         </thead>
         <tbody>
+          <transition-group name="slide-up" tag="td" appear>
           <tr v-for="entry in entries" :key="entry.id">
             <td class="border px-4 py-2" v-text="entry.date"></td>
             <td class="border px-4 py-2" v-text="entry.description"></td>
@@ -44,6 +45,7 @@
               <button>Delete</button>
             </td>
           </tr>
+          </transition-group>
         </tbody>
       </table>
     </div>

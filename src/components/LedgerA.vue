@@ -9,6 +9,11 @@
           v-model="newEntry.description"
           placeholder="Description"
         />
+        <select v-model="newEntry.currency">
+          <option v-for="currency in currencies" :key="currency.id" :value="currency.sign">
+            {{ currency.label }}
+          </option>
+        </select>
         <input type="text" v-model="newEntry.amount" placeholder="Amount" />
 
         <button
@@ -34,9 +39,7 @@
           <tr v-for="entry in entries" :key="entry.id">
             <td class="border px-4 py-2" v-text="entry.date"></td>
             <td class="border px-4 py-2" v-text="entry.description"></td>
-            <td class="border px-4 py-2">
-              {{ currency.dollar.sign }} {{ entry.amount }}
-            </td>
+            <td class="border px-4 py-2" >{{entry.currency}} {{entry.amount}}</td>
             <td @click="deleteEntry(entry)" class="border px-4 py-2">
               <button>Delete</button>
             </td>
@@ -52,15 +55,15 @@ export default {
   data: function() {
     return {
       title: "Record Transation:",
-      selectedCurrency: "",
-      currency: {
-        dollar: { sign: "$" },
-        euro: { sign: "€" },
-      },
+      currencies: [
+        { id: 1, sign: "$", label: "CAD" },
+        { id: 2, sign: "€", label: "Euro" },
+      ],
 
       newEntry: {
         description: "",
         amount: "",
+        currency: "",
         date: "",
       },
       entries: [
@@ -68,12 +71,14 @@ export default {
           id: 1,
           description: "Take Out Burritos",
           amount: 10.4,
+          currency: "$",
           date: "10/05/2020",
         },
         {
           id: 2,
           description: "Clothes from American Eagle",
           amount: 70.48,
+          currency: "$",
           date: "05/05/2020",
         },
       ],
@@ -89,6 +94,7 @@ export default {
       this.newEntry = {
         description: "",
         amount: "",
+        currency: "",
         date: "",
       };
     },

@@ -1,7 +1,10 @@
 <template>
-  <transition appear @before-enter="beforeEnter" @enter="enter" :css="false">
-    <div class="modal w-48 h-48 bg-gray-400 rounded-lg"></div>
-  </transition>
+  <div>
+    <div v-text="title"></div>
+    <transition appear @before-enter="beforeEnter" @enter="enter" :css="false">
+      <div class="modal w-48 h-48 bg-gray-400 rounded-lg"></div>
+    </transition>
+  </div>
 </template>
 
 <script>
@@ -9,7 +12,7 @@ import gsap from "gsap";
 export default {
   data: function() {
     return {
-      title: "title",
+      title: "GSAP",
     };
   },
   methods: {

@@ -1,6 +1,7 @@
 <template>
   <div>
     <div v-text="title"></div>
+    <button @click="startRace">Click to race heros!</button>
     <div class="img-container">
       <img class="runner first" src="../../assets/images/flash.png" alt="Flash" />
       <img class="runner second" src="../../assets/images/quicksilver.png" alt="QuickSilver" />
@@ -17,13 +18,19 @@ export default {
       title: "GSAP Timeline",
     };
   },
-  mounted() {
+  methods: {
+    startRace() {
+     this.superHeroRace()
+    },
+   
+   superHeroRace() {
     let tl = gsap.timeline({repeat: -1, repeatDelay: .75})
-    tl.to('.first', { x: 700, duration: 7, ease: 'expo.out'})
-    tl.to('.second', { x: 700, duration: 5.5, ease: 'expo.out'}, '<')
-    tl.to('.third', { x: 700, duration: 3, ease: 'expo.out'}, '<')
+    tl.to('.first', { x: 700, duration: 6, ease: 'none'})
+    tl.to('.second', { x: 700, duration: 4.5, ease: 'none'}, '<')
+    tl.to('.third', { x: 700, duration: 2, ease: 'none'}, '<')
   }
-  
+  },
+    
 };
 </script>
 

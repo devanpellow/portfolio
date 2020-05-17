@@ -18,7 +18,7 @@
             :key="c.value"
           >
             <button @click="shuffle(c)" class="w-full h-full">
-              {{ c.value }}
+              {{ c.label }}
             </button>
           </div>
           </transition-group>
@@ -34,78 +34,98 @@ export default {
       calculator: [
         {
           value: "C",
+          label: "C",
           grey: true,
         },
         {
           value: 7,
+          label: 7,
           grey: true,
         },
         {
           value: 4,
+          label: 4,
           grey: true,
         },
         {
           value: 1,
+          label: 1,
           grey: true,
         },
         {
           value: "+ / -",
+          label: "+ / -",
           grey: true,
         },
         {
           value: "(",
+          label: "(",
           grey: true,
         },
         {
           value: 8,
+          label: 8,
           grey: true,
         },
         {
           value: 5,
+          label: 5,
           grey: true,
         },
         {
           value: 2,
+          label: 2,
           grey: true,
         },
         {
           value: 0,
+          label: 0,
           grey: true,
         },
         {
           value: ")",
+          label: ")",
           grey: true,
         },
         {
           value: 9,
+          label: 9,
           grey: true,
         },
         {
           value: 6,
+          label: 6,
           grey: true,
         },
         {
           value: 3,
+          label: 3,
           grey: true,
         },
         {
           value: ".",
+          label: ".",
           grey: true,
         },
         {
           value: "/",
+          label: "/",
         },
         {
-          value: "x",
+          value: "*",
+          label: "x",
         },
         {
           value: "-",
+          label: "-",
         },
         {
           value: "+",
+          label: "+",
         },
         {
           value: "=",
+          label: "=",
         },
       ],
     };

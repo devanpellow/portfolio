@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="text-6xl text-center py-10">Ledger A</div>
+    <div class="text-4xl text-center py-10">Ledger A</div>
     <div class="text-xs text-center flex flex-col w-1/2 mx-auto mb-20" v-html="quote"></div>
     <LedgerA />
   </div>

@@ -5,7 +5,6 @@ import About from "./pages/PageAbout.vue";
 import Animation from "./pages/PageAnimation.vue";
 import Calculator from "./pages/PageCalculator.vue";
 import LedgerA from "./pages/PageLedgerA.vue";
-import LandingPageMock from "./pages/LandingPageMock"
 
 Vue.use(Router);
 
@@ -35,11 +34,6 @@ export default new Router({
       path: "/ledger-A",
       name: "ledger-a",
       component: LedgerA,
-    },
-    {
-      path: "/mock",
-      name: "mock",
-      component: LandingPageMock,
     },
   ],
 });

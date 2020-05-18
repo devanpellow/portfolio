@@ -29,6 +29,7 @@
           (day.goalsCompleted === 2) ? 'bg-green-300' : 'bg-gray-400',
           (day.goalsCompleted === 3) ? 'bg-green-600' : 'bg-gray-400' ]"
         ></div>
+        <div>create set width, add nice transitional delay to coloured backgrounds </div>
       </div>
     </div>
   </div>

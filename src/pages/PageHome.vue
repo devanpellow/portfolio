@@ -1,7 +1,6 @@
 <template>
   <div class="">
     <Header></Header>
-    Home :D
   </div>
 </template>
 

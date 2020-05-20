@@ -9,20 +9,19 @@
         </div>
       </transition>
       <transition-group
-        class="w-full grid grid-cols-4 grid-flow-row"
+        class="grid grid-cols-4"
         name="slide-up"
         appear
       >
         <div
           v-for="button in buttons"
           :class="[
-            'border text-2xl',
-            button.rectangle_hor ? 'col-span-2 h-12' : 'h-12',
-            button.rectangle_vir ? 'row-span-2' : 'h-12',
+            'border h-16 text-2xl',
+            button.rectangle_hor ? 'col-span-2'  : 'col-span-1',
           ]"
           :key="button.value"
         >
-          <button @click="inputTrigger()" class="w-full h-full">
+          <button @click="shuffle()" class="w-full h-full">
             {{ button.label }}
           </button>
         </div>

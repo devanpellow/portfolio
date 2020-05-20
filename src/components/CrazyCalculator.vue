@@ -5,7 +5,7 @@
       <div
         class="h-16 w-full text-right text-white text-5xl bg-black border-none px-2"
       >
-        {{ display }}
+        {{ display.substring(0,9) }}
       </div>
       </transition>
         <transition-group class="grid grid-rows-5 grid-flow-col"  name="slide-up" appear>
@@ -109,7 +109,7 @@ export default {
         },
         {
           value: "/",
-          label: "/",
+          label: "÷",
         },
         {
           value: "*",

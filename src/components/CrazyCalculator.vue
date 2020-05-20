@@ -1,28 +1,33 @@
 <template>
   <div class="flex justify-center">
-    <div>
+    <div class="w-64">
       <transition name="fade" mode="out-in">
-      <div
-        class="h-16 w-full text-right text-white text-5xl bg-black border-none px-2"
-      >
-        {{ display.substring(0,9) }}
-      </div>
+        <div
+          class="h-16 w-full text-right text-white text-5xl bg-black border-none px-2"
+        >
+          {{ display }}
+        </div>
       </transition>
-        <transition-group class="grid grid-rows-5 grid-flow-col"  name="slide-up" appear>
-          <div
-            v-for="c in calculator"
-            :class="[
-              'iphone-border w-16 h-12 text-2xl',
-              c.grey ? 'bg-gray-400 text-black' : 'bg-orange-400 text-white',
-            ]"
-            :key="c.value"
-          >
-            <button @click="shuffle(c)" class="w-full h-full">
-              {{ c.label }}
-            </button>
-          </div>
-          </transition-group>
-      </div>
+      <transition-group
+        class="w-full grid grid-cols-4 grid-flow-row"
+        name="slide-up"
+        appear
+      >
+        <div
+          v-for="button in buttons"
+          :class="[
+            'border text-2xl',
+            button.rectangle_hor ? 'col-span-2 h-12' : 'h-12',
+            button.rectangle_vir ? 'row-span-2' : 'h-12',
+          ]"
+          :key="button.value"
+        >
+          <button @click="inputTrigger()" class="w-full h-full">
+            {{ button.label }}
+          </button>
+        </div>
+      </transition-group>
+    </div>
   </div>
 </template>
 
@@ -31,115 +36,103 @@ export default {
   data: function() {
     return {
       display: "",
-      calculator: [
+      buttons: [
         {
-          value: "C",
           label: "C",
-          grey: true,
-        },
+          value: "clear",
+          rectangle_hor: true,
+        }, 
         {
-          value: 7,
-          label: 7,
-          grey: true,
-        },
+          label: "del",
+          value: "delete",
+        }, 
         {
-          value: 4,
-          label: 4,
-          grey: true,
-        },
-        {
-          value: 1,
-          label: 1,
-          grey: true,
-        },
-        {
-          value: "+ / -",
-          label: "+ / -",
-          grey: true,
-        },
-        {
-          value: "(",
-          label: "(",
-          grey: true,
-        },
-        {
-          value: 8,
-          label: 8,
-          grey: true,
-        },
-        {
-          value: 5,
-          label: 5,
-          grey: true,
-        },
-        {
-          value: 2,
-          label: 2,
-          grey: true,
-        },
-        {
-          value: 0,
-          label: 0,
-          grey: true,
-        },
-        {
-          value: ")",
-          label: ")",
-          grey: true,
-        },
-        {
-          value: 9,
-          label: 9,
-          grey: true,
-        },
-        {
-          value: 6,
-          label: 6,
-          grey: true,
-        },
-        {
-          value: 3,
-          label: 3,
-          grey: true,
-        },
-        {
-          value: ".",
-          label: ".",
-          grey: true,
-        },
-        {
-          value: "/",
           label: "÷",
+          value: "div",
+        }, 
+        {
+          label: "7",
+          value: 7,
         },
         {
-          value: "*",
-          label: "x",
+          label: "8",
+          value: 8,
         },
         {
-          value: "-",
-          label: "-",
+          label: "9",
+          value: 9,
         },
         {
-          value: "+",
+          label: "×",
+          value: "mult",
+        },
+        {
+          label: "4",
+          value: 4,
+        },
+        {
+          label: "5",
+          value: 5,
+        },       
+        {
+          label: "6",
+          value: 6,
+        },
+        {
+          label: "−",
+          value: "sub",
+        },
+        {
+          label: "1",
+          value: 1,
+        },
+        {
+          label: "2",
+          value: 2,
+        },
+        {
+          label: "3",
+          value: 3,
+        },
+        {
           label: "+",
+          value: "add",
+        },   
+        {
+          label: "0",
+          value: 0,
+          rectangle_hor: true,
         },
         {
-          value: "=",
+          label: ".",
+          value: ".",
+        }, 
+        {
           label: "=",
+          value: "sum",
         },
       ],
     };
   },
   methods: {
-    shuffle: function(c) {
-      this.calculator.sort(() => Math.random() - 0.5);
-      if (c.value === "=") {
-        this.display = eval(this.display);
-      } else if (c.value === "C") {
-        this.display = "";
-      } else {
-        this.display += c.value;
-      }
+    inputTrigger: function() {
+      this.shuffle();
+      // if (c.value === "=") {
+      //   this.evaluate();
+      // } else if (c.value === "C") {
+      //   this.clearDisplay();
+      // } else {
+      //   this.display += c.value;
+      // }
+    },
+    shuffle: function() {
+      this.buttons.sort(() => Math.random() - 0.5);
+    },
+    evaluate: function() {
+      this.display = eval(this.display).substring(0, 8);
+    },
+    clearDisplay: function() {
+      this.display = "";
     },
   },
 };
@@ -158,9 +151,5 @@ export default {
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease-out;
-}
-
-.iphone-border {
-  border: 1px solid #718096;
 }
 </style>

@@ -8,24 +8,55 @@
           {{ display }}
         </div>
       </transition>
-      <transition-group
-        class="grid grid-cols-4"
-        name="slide-up"
-        appear
-      >
-        <div
-          v-for="button in buttons"
-          :class="[
-            'border h-16 text-2xl',
-            button.rectangle_hor ? 'col-span-2'  : 'col-span-1',
-          ]"
-          :key="button.value"
-        >
+      <div class="flex flex-row">
+        <div :class="['border w-1/2 h-16 text-2xl']">
+          <button @click="shuffle()" class="w-full h-full">C</button>
+        </div>
+        <div :class="['border w-1/4 h-16 text-2xl']">
+          <button @click="shuffle()" class="w-full h-full">del</button>
+        </div>
+        <div :class="['border w-1/4 h-16 text-2xl']">
+          <button @click="shuffle()" class="w-full h-full">÷</button>
+        </div>
+      </div>
+      <div class="flex">
+        <transition-group class="w-3/4 justify-center flex flex-wrap" name="slide-up" appear>
+          <div
+            v-for="number in numbers"
+            :class="['border h-16 w-16 text-2xl']"
+            :key="number.value"
+          >
+            <button @click="shuffle()" class="w-full h-full">
+              {{ number.label }}
+            </button>
+          </div>
+          
+        </transition-group>
+        <div class="flex flex-col">
+          <div
+            v-for="operator in operators"
+            :class="['border h-16 w-16 text-2xl']"
+            :key="operator.value"
+          >
+            <button @click="shuffle()" class="w-full h-full">
+              {{ operator.label }}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div>
+        
+        <div :class="['-my-16 border h-16 w-16 text-2xl']">
           <button @click="shuffle()" class="w-full h-full">
-            {{ button.label }}
+            .
           </button>
         </div>
-      </transition-group>
+        <div :class="['border ml-32 h-16 w-32 text-2xl']">
+          <button @click="shuffle()" class="w-full h-full">
+            =
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -35,20 +66,7 @@ export default {
   data: function() {
     return {
       display: "",
-      buttons: [
-        {
-          label: "C",
-          value: "clear",
-          rectangle_hor: true,
-        }, 
-        {
-          label: "del",
-          value: "delete",
-        }, 
-        {
-          label: "÷",
-          value: "div",
-        }, 
+      numbers: [
         {
           label: "7",
           value: 7,
@@ -62,24 +80,16 @@ export default {
           value: 9,
         },
         {
-          label: "×",
-          value: "mult",
-        },
-        {
           label: "4",
           value: 4,
         },
         {
           label: "5",
           value: 5,
-        },       
+        },
         {
           label: "6",
           value: 6,
-        },
-        {
-          label: "−",
-          value: "sub",
         },
         {
           label: "1",
@@ -93,23 +103,29 @@ export default {
           label: "3",
           value: 3,
         },
-        {
-          label: "+",
-          value: "add",
-        },   
+
         {
           label: "0",
           value: 0,
-          rectangle_hor: true,
+        },
+      ],
+      operators: [
+        {
+          label: "×",
+          value: "mul",
         },
         {
-          label: ".",
-          value: ".",
-        }, 
-        {
-          label: "=",
-          value: "sum",
+          label: "−",
+          value: "sub",
         },
+        {
+          label: "+",
+          value: "add",
+        },
+        // {
+        //   label: "=",
+        //   value: "sum",
+        // },
       ],
     };
   },
@@ -125,7 +141,8 @@ export default {
       // }
     },
     shuffle: function() {
-      this.buttons.sort(() => Math.random() - 0.5);
+      this.numbers.sort(() => Math.random() - 0.5);
+      // this.buttons.sort((a, b) => a.number - b.number);
     },
     evaluate: function() {
       this.display = eval(this.display).substring(0, 8);

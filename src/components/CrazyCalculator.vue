@@ -3,23 +3,23 @@
     <div class="w-64">
       <transition name="fade" mode="out-in">
         <div
-          class="h-16 w-full text-right text-white text-5xl bg-black border-none px-2"
+          class="h-16 rounded w-full text-right text-white text-5xl bg-black border-none px-2"
         >
-          {{ current || "" }}
+          {{ display || "" }}
         </div>
       </transition>
-      <div class="flex flex-row">
-        <div class="border w-1/2 h-16 text-2xl">
+      <div class="flex flex-row ">
+        <div class="rounded border w-1/2 h-16 text-2xl">
           <button @click="clear()" value="clr" class="w-full h-full">
             C
           </button>
         </div>
-        <div class="border w-1/4 h-16 text-2xl">
+        <div class="rounded border w-1/4 h-16 text-2xl">
           <button @click="del()" value="del" class="w-full h-full">
             del
           </button>
         </div>
-        <div class="border w-1/4 h-16 text-2xl">
+        <div class="rounded border w-1/4 h-16 text-2xl">
           <button @click="divide()" value="div" class="w-full h-full">
             ÷
           </button>
@@ -33,7 +33,7 @@
         >
           <div
             v-for="number in numbers"
-            class="border h-16 w-16 text-2xl"
+            class="rounded border h-16 w-16 text-2xl"
             :key="number.value"
           >
             <button @click="append(number)" class="w-full h-full">
@@ -42,12 +42,12 @@
           </div>
         </transition-group>
         <div class="flex flex-col">
-          <div class="border h-16 w-16 text-2xl">
+          <div class="rounded border h-16 w-16 text-2xl">
             <button @click="times()" value="div" class="w-full h-full">
               ×
             </button>
           </div>
-          <div class="border h-16 w-16 text-2xl">
+          <div class="rounded border h-16 w-16 text-2xl">
             <button @click="minus()" value="div" class="w-full h-full">
               −
             </button>
@@ -59,13 +59,13 @@
           </div>
         </div>
       </div>
-      <div>
-        <div class="-my-16 border h-16 w-16 text-2xl">
+      <div class="">
+        <div class="-my-16 rounded border h-16 w-16 text-2xl">
           <button @click="dot('.')" value="." class="w-full h-full">
             .
           </button>
         </div>
-        <div :class="['border ml-32 h-16 w-32 text-2xl']">
+        <div class="rounded border ml-32 h-16 w-32 text-2xl">
           <button @click="equal()" value="sum" class="w-full h-full">
             =
           </button>
@@ -79,6 +79,7 @@
 export default {
   data: function() {
     return {
+      display: "",
       previous: null,
       current: "",
       operator: null,
@@ -138,12 +139,14 @@ export default {
           this.operatorClicked = false;
         }
         this.current = `${this.current}${number.value}`;
+        this.display += number.value;
       } else {
         if (this.operatorClicked) {
           this.current = "";
           this.operatorClicked = false;
         }
         this.current = `${this.current}${number}`;
+        this.display += number.value;
       }
     },
     dot() {
@@ -156,18 +159,22 @@ export default {
       this.operatorClicked = true;
     },
     divide() {
+      this.display += "÷";
       this.operator = (a, b) => a / b;
       this.setPrevious();
     },
     times() {
+      this.display += "×";
       this.operator = (a, b) => a * b;
       this.setPrevious();
     },
     minus() {
+      this.display += "−";
       this.operator = (a, b) => a - b;
       this.setPrevious();
     },
     add() {
+      this.display += "+";
       this.operator = (a, b) => a + b;
       this.setPrevious();
     },
@@ -177,15 +184,18 @@ export default {
         parseFloat(this.current)
       )}`;
       this.previous = null;
+      this.display = this.current;
     },
 
     shuffle() {
       this.numbers.sort(() => Math.random() - 0.5);
     },
     clear() {
+      this.display = "";
       this.current = "";
     },
     del() {
+      this.display = this.display.substring(0, this.current.length - 1);
       this.current = this.current.substring(0, this.current.length - 1);
     },
   },

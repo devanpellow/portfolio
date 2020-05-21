@@ -146,7 +146,7 @@ export default {
           this.operatorClicked = false;
         }
         this.current = `${this.current}${number}`;
-        this.display += number.value;
+        this.display += number;
       }
     },
     dot() {

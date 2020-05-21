@@ -3,7 +3,7 @@
     <div class="w-64">
       <transition name="fade" mode="out-in">
         <div
-          class="h-16 rounded w-full text-right text-white text-5xl bg-black border-none px-2"
+          class="h-16 rounded w-full text-right text-white text-5xl bg-black bg-opacity-50 border-none px-2"
         >
           {{ display || "" }}
         </div>
@@ -33,7 +33,7 @@
         >
           <div
             v-for="number in numbers"
-            class="rounded border h-16 w-16 text-2xl"
+            class="rounded border shadow-2xl h-16 w-16 text-2xl"
             :key="number.value"
           >
             <button @click="append(number)" class="w-full h-full">

@@ -24,7 +24,7 @@
         <div
           v-for="day in trackedDays"
           :key="day.day"
-          :class="['card my-2 mx-2 w-10 h-10 rounded-lg', 
+          :class="['card w-10 h-10 rounded', 
           (day.goalsCompleted === 1) ? 'bg-green-200' : 'bg-gray-400',
           (day.goalsCompleted === 2) ? 'bg-green-300' : 'bg-gray-400',
           (day.goalsCompleted === 3) ? 'bg-green-600' : 'bg-gray-400' ]"
@@ -50,6 +50,7 @@ export default {
         { id: 2, description: "Push To GitHub", completed: false },
         { id: 3, description: "Workout or Walk", completed: false },
       ],
+      calculatedDays: [],
       trackedDays: [
         {day: 3, dailyGoals: 3, goalsCompleted: 1},
         {day: 1, dailyGoals: 3, goalsCompleted: 3},
@@ -92,6 +93,14 @@ export default {
       let index = this.dailyGoals.indexOf(goal);
       this.dailyGoals.splice(index, 1);
     },
+  },
+  created: {
+    calculateColour () {
+      
+      this.trackedDays.forEach(element => {
+        element.goalsCompleted / element.dailyGoals
+      });
+    }
   },
    mounted() {
     gsap.from('.card', {
